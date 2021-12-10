@@ -2,8 +2,8 @@ name: Build and publish docker image
 
 on:
   push:
-    tags:
-      - 'v*'
+    branches:
+      - main
 
 env:
   IMAGE_NAME: ${{ github.repository }}
@@ -36,6 +36,6 @@ jobs:
         with:
           context: .
           push: true
-          tags:  ${{ steps.meta.outputs.tags }}
+          tags:  oakman/drone8s
           labels: ${{ steps.meta.outputs.labels }}
           platforms: linux/amd64,linux/arm64, linux/arm/v7
